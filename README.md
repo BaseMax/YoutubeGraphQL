@@ -78,6 +78,11 @@ This will start the server at http://localhost:3000.
 - `getPopularChannels(limit: Int!): [Channel]`: Retrieves a list of popular channels, limited by the specified number.
 - `searchVideos(query: String!): [Video]`:Searches for videos based on the provided query string.
 - `searchChannels(query: String!): [Channel]`: Searches for channels based on the provided query string.
+- `getVideosByChannel(channelId: ID!): [Video]`: Retrieves a list of videos uploaded by a specific channel.
+- `getSubscribedChannels(userId: ID!): [Channel]`: Retrieves a list of channels subscribed to by a user.
+- `getCommentsByVideo(videoId: ID!): [Comment]`: Retrieves a list of comments for a specific video.
+- `getRecommendedVideos(userId: ID!): [Video]`: Retrieves a list of recommended videos based on a user's preferences.
+- `getLikedVideos(userId: ID!): [Video]`: Retrieves a list of videos liked by a user.
 
 ## Mutations
 
@@ -89,6 +94,14 @@ This will start the server at http://localhost:3000.
 - `addComment(videoId: ID!, input: AddCommentInput!): Comment`: Adds a comment to a video specified by its ID.
 - `subscribeToChannel(channelId: ID!): Channel`: Subscribes to a channel specified by its ID.
 - `updateUserProfile(input: UpdateUserProfileInput!): User`: Updates the user's profile information with the provided input.
+- `updateVideo(videoId: ID!, input: UpdateVideoInput!): Vide`: Updates the information of a specific video specified by its ID.
+- `deleteVideo(videoId: ID!): Boolean`: eletes a specific video specified by its ID.
+- `deleteComment(commentId: ID!): Boolean`: Deletes a specific comment specified by its ID.
+- `createChannel(input: CreateChannelInput!): Channel`: Creates a new channel with the provided channel information.
+- `updateChannel(channelId: ID!, input: UpdateChannelInput!): Channel`: Updates the information of a specific channel specified by its ID.
+- `deleteChannel(channelId: ID!): Boolean`: Deletes a specific channel specified by its ID.
+- `subscribeToPlaylist(playlistId: ID!): Playlist`: Subscribes to a playlist specified by its ID.
+- `createPlaylist(input: CreatePlaylistInput!): Playlist`: Creates a new playlist with the provided playlist information.
 
 ## Usage
 
