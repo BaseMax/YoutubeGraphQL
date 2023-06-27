@@ -128,6 +128,127 @@ This will start the server at http://localhost:3000.
 - `removeVideoFromPlaylist(playlistId: ID!, videoId: ID!): Playlist`: Removes a video from a specific playlist.
 - `updateChannelSubscription(channelId: ID!, isSubscribed: Boolean!): Channel`: Updates the subscription status of a channel for the currently authenticated user.
 
+## Models
+
+```typescript
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  avatarUrl: String
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Video {
+  id: ID!
+  title: String!
+  description: String
+  url: String!
+  thumbnailUrl: String
+  views: Int!
+  likes: Int!
+  dislikes: Int!
+  duration: Float!
+  uploader: User!
+  uploadedAt: String!
+}
+
+type Channel {
+  id: ID!
+  name: String!
+  description: String
+  avatarUrl: String
+  subscribers: Int!
+  owner: User!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Comment {
+  id: ID!
+  text: String!
+  author: User!
+  video: Video!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Playlist {
+  id: ID!
+  name: String!
+  description: String
+  owner: User!
+  videos: [Video]!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+input RegisterUserInput {
+  name: String!
+  email: String!
+  password: String!
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+input UploadVideoInput {
+  title: String!
+  description: String
+  url: String!
+  thumbnailUrl: String
+  duration: Float!
+}
+
+input AddCommentInput {
+  text: String!
+  videoId: ID!
+}
+
+input UpdateUserProfileInput {
+  name: String
+  avatarUrl: String
+}
+
+input UpdateVideoInput {
+  title: String
+  description: String
+  thumbnailUrl: String
+}
+
+input CreateChannelInput {
+  name: String!
+  description: String
+}
+
+input UpdateChannelInput {
+  name: String
+  description: String
+}
+
+input CreatePlaylistInput {
+  name: String!
+  description: String
+}
+
+input UpdatePlaylistInput {
+  name: String
+  description: String
+}
+
+
+.. TODO
+```
+
 ## Usage
 
 You can use tools like Postman or Insomnia to interact with the API.
