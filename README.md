@@ -88,6 +88,10 @@ This will start the server at http://localhost:3000.
 - `getPlaylistVideos(playlistId: ID!): [Video]`: Retrieves a list of videos contained in a specific playlist.
 - `getLikedVideosByUser(userId: ID!): [Video]`: Retrieves a list of videos liked by a specific user.
 - `getVideoComments(videoId: ID!): [Comment]`: Retrieves a list of comments for a specific video.
+- `getLikedVideosByUser(userId: ID!): [Video]`: Retrieves a list of videos liked by a specific user.
+- `getSubscribedChannelsByUser(userId: ID!): [Channel]`: Retrieves a list of channels subscribed to by a specific user.
+- `getChannelVideos(channelId: ID!): [Video]`: Retrieves a list of videos uploaded by a specific channel.
+- `getRecommendedChannels(userId: ID!): [Channel]`: Retrieves a list of recommended channels based on a user's preferences.
 
 ## Mutations
 
@@ -115,6 +119,14 @@ This will start the server at http://localhost:3000.
 - `likeChannel(channelId: ID!): Channel`: Likes a channel specified by its ID.
 - `dislikeChannel(channelId: ID!): Channel`: Dislikes a channel specified by its ID.
 - `addVideoToPlaylist(playlistId: ID!, videoId: ID!): Playlist`: Adds a video to a specific playlist.
+- `createPlaylist(input: CreatePlaylistInput!): Playlist`: Creates a new playlist with the provided playlist information.
+- `updatePlaylist(playlistId: ID!, input: UpdatePlaylistInput!): Playlist`: Updates the information of a specific playlist specified by its ID.
+- `deletePlaylist(playlistId: ID!): Boolean`: Deletes a specific playlist specified by its ID.
+- `likePlaylist(playlistId: ID!): Playlist`: Likes a playlist specified by its ID.
+- `dislikePlaylist(playlistId: ID!): Playlist`: Dislikes a playlist specified by its ID.
+- `addVideoToPlaylist(playlistId: ID!, videoId: ID!): Playlist`: Adds a video to a specific playlist.
+- `removeVideoFromPlaylist(playlistId: ID!, videoId: ID!): Playlist`: Removes a video from a specific playlist.
+- `updateChannelSubscription(channelId: ID!, isSubscribed: Boolean!): Channel`: Updates the subscription status of a channel for the currently authenticated user.
 
 ## Usage
 
