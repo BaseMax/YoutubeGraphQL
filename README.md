@@ -69,6 +69,27 @@ npm run dev
 
 This will start the server at http://localhost:3000.
 
+## Queries
+
+- `getUser(id: ID!): User`: Retrieves a user's information by their ID.
+- `getVideo(id: ID!): Video`: Retrieves a video's information by its ID.
+- `getChannel(id: ID!): Channel`: Retrieves a channel's information by its ID.
+- `getTrendingVideos(limit: Int!): [Video]`: Retrieves a list of trending videos, limited by the specified number.
+- `getPopularChannels(limit: Int!): [Channel]`: Retrieves a list of popular channels, limited by the specified number.
+- `searchVideos(query: String!): [Video]`:Searches for videos based on the provided query string.
+- `searchChannels(query: String!): [Channel]`: Searches for channels based on the provided query string.
+
+## Mutations
+
+- `registerUser(input: RegisterUserInput!): AuthPayload`: Registers a new user with the provided user information.
+- `loginUser(input: LoginUserInput!): AuthPayload`: Authenticates a user with the provided login credentials.
+- `uploadVideo(input: UploadVideoInput!): Video`: Uploads a new video with the provided video information.
+- `likeVideo(videoId: ID!): Video`: Likes a video specified by its ID.
+- `dislikeVideo(videoId: ID!): Video`: Dislikes a video specified by its ID.
+- `addComment(videoId: ID!, input: AddCommentInput!): Comment`: Adds a comment to a video specified by its ID.
+- `subscribeToChannel(channelId: ID!): Channel`: Subscribes to a channel specified by its ID.
+- `updateUserProfile(input: UpdateUserProfileInput!): User`: Updates the user's profile information with the provided input.
+
 ## Usage
 
 You can use tools like Postman or Insomnia to interact with the API.
