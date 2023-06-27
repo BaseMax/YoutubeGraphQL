@@ -83,6 +83,11 @@ This will start the server at http://localhost:3000.
 - `getCommentsByVideo(videoId: ID!): [Comment]`: Retrieves a list of comments for a specific video.
 - `getRecommendedVideos(userId: ID!): [Video]`: Retrieves a list of recommended videos based on a user's preferences.
 - `getLikedVideos(userId: ID!): [Video]`: Retrieves a list of videos liked by a user.
+- `getPlaylistsByUser(userId: ID!): [Playlist]`: Retrieves a list of playlists created by a specific user.
+- `getPlaylist(playlistId: ID!): Playlist`: Retrieves the information of a specific playlist specified by its ID.
+- `getPlaylistVideos(playlistId: ID!): [Video]`: Retrieves a list of videos contained in a specific playlist.
+- `getLikedVideosByUser(userId: ID!): [Video]`: Retrieves a list of videos liked by a specific user.
+- `getVideoComments(videoId: ID!): [Comment]`: Retrieves a list of comments for a specific video.
 
 ## Mutations
 
@@ -102,6 +107,14 @@ This will start the server at http://localhost:3000.
 - `deleteChannel(channelId: ID!): Boolean`: Deletes a specific channel specified by its ID.
 - `subscribeToPlaylist(playlistId: ID!): Playlist`: Subscribes to a playlist specified by its ID.
 - `createPlaylist(input: CreatePlaylistInput!): Playlist`: Creates a new playlist with the provided playlist information.
+- `createComment(input: CreateCommentInput!): Comment`: Creates a new comment with the provided comment information.
+- `updateComment(commentId: ID!, input: UpdateCommentInput!): Comment`: Updates the information of a specific comment specified by its ID.
+- `deletePlaylist(playlistId: ID!): Boolean`: Deletes a specific playlist specified by its ID.
+- `likeComment(commentId: ID!): Comment`: Likes a comment specified by its ID.
+- `dislikeComment(commentId: ID!): Comment`: Dislikes a comment specified by its ID.
+- `likeChannel(channelId: ID!): Channel`: Likes a channel specified by its ID.
+- `dislikeChannel(channelId: ID!): Channel`: Dislikes a channel specified by its ID.
+- `addVideoToPlaylist(playlistId: ID!, videoId: ID!): Playlist`: Adds a video to a specific playlist.
 
 ## Usage
 
