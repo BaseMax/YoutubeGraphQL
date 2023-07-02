@@ -1,0 +1,23 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AuthenticatedPayload {
+  name: String!
+  token: String!
+}
+
+type Query {
+  auth: [AuthenticatedPayload!]!
+}
+
+type Mutation {
+  signup(signupDto: SignupInput!): AuthenticatedPayload!
+}
+
+input SignupInput {
+  email: String!
+  name: String!
+  password: String!
+  confirmPassword: String!
+}
