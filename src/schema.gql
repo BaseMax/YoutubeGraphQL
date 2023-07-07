@@ -7,12 +7,82 @@ type AuthenticatedPayload {
   token: String!
 }
 
+type Comment {
+  _id: String!
+  commentMessage: String!
+  videoId: String!
+}
+
+type CreatedComment {
+  id: String!
+}
+
+type Video {
+  videoUrl: String!
+  countOfLikes: Int!
+  countOfDisLikes: Float!
+  description: String!
+  userId: String!
+  comments: [Comment!]
+}
+
+type CreatedVideo {
+  id: String!
+}
+
+type Channel {
+  name: String!
+  _id: String!
+}
+
+type CreatedChannel {
+  id: String!
+}
+
+type Subscription {
+  _id: String!
+  userId: String!
+  channelId: String!
+  channel: Channel!
+}
+
+type User {
+  name: String!
+  email: String!
+}
+
+type UpdatedUser {
+  id: String!
+}
+
 type Query {
-  auth: [AuthenticatedPayload!]!
+  allVideos: [Video!]!
+  videoById(id: String!): Video!
+  findTrendingVideos: [Video!]!
+  comment: [Comment!]!
+  videoComments(id: String!): [Comment!]!
+  getChannels: [Channel!]!
+  findChannel(id: String!): Channel!
+  subscription: [Subscription!]!
+  getAllSubscribedChannel: [Subscription!]!
+  findAllUsers: [User!]!
+  findUserById(id: String!): User!
 }
 
 type Mutation {
   signup(signupDto: SignupInput!): AuthenticatedPayload!
+  login(loginDto: loginDto!): AuthenticatedPayload!
+  createVideo(createVideoInput: CreateVideoInput!): CreatedVideo!
+  likeVideo(id: String!): Video!
+  dislikeVideo(id: String!): Video!
+  createComment(createCommentInput: CreateCommentInput!): CreatedComment!
+  updateComment(updateCommentInput: UpdateCommentInput!): Comment!
+  removeComment(id: Int!): Comment!
+  createChannel(createChannelInput: CreateChannelInput!): CreatedChannel!
+  removeChannel(id: String!): Channel!
+  subscribeChannel(subscribeInput: CreateSubscriptionInput!): CreatedChannel!
+  updateUser(updateUserInput: UpdateUserInput!): UpdatedUser!
+  removeUser: User!
 }
 
 input SignupInput {
@@ -20,4 +90,40 @@ input SignupInput {
   name: String!
   password: String!
   confirmPassword: String!
+}
+
+input loginDto {
+  email: String!
+  password: String!
+}
+
+input CreateVideoInput {
+  videoLink: String!
+  description: String!
+}
+
+input CreateCommentInput {
+  videoId: String!
+  commentMessage: String!
+}
+
+input UpdateCommentInput {
+  videoId: String
+  commentMessage: String
+  id: Int!
+}
+
+input CreateChannelInput {
+  name: String!
+}
+
+input CreateSubscriptionInput {
+  channelId: String!
+}
+
+input UpdateUserInput {
+  email: String
+  name: String
+  password: String
+  confirmPassword: String
 }

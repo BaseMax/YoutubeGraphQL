@@ -8,7 +8,11 @@ import { join } from "path";
 import { GraphQLError, GraphQLFormattedError } from "graphql";
 import { DbModule } from "./DB/db.module";
 import { ConfigModule, ConfigService } from "@nestjs/config";
-import { JwtModule } from "@nestjs/jwt";
+import { VideoModule } from "./video/video.module";
+import { CommentModule } from "./comment/comment.module";
+import { ChannelModule } from "./channel/channel.module";
+import { SubscriptionModule } from "./subscription/subscription.module";
+import { UserModule } from "./user/user.module";
 
 @Module({
   imports: [
@@ -17,18 +21,15 @@ import { JwtModule } from "@nestjs/jwt";
       autoSchemaFile: join(process.cwd(), "src/schema.gql"),
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
-      formatError: (error: GraphQLError) => {
-        const graphQLFormattedError: GraphQLFormattedError = {
-          message:
-            (error?.extensions?.exception as any)?.response?.message ||
-            error?.message,
-        };
-        return graphQLFormattedError;
-      },
     }),
     ConfigModule.forRoot({ isGlobal: true }),
     DbModule,
     AuthModule,
+    VideoModule,
+    CommentModule,
+    ChannelModule,
+    SubscriptionModule,
+    UserModule,
   ],
 
   controllers: [],
