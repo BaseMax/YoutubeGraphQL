@@ -11,3 +11,14 @@ export class loginDto {
   @IsString()
   password: string;
 }
+
+@InputType()
+export class LoginInput {
+  @IsEmail()
+  @Field()
+  email: string;
+
+  @IsString()
+  @Field()
+  password: string;
+}
