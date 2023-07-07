@@ -97,14 +97,12 @@ This will start the server at http://localhost:3000.
 
 - `registerUser(input: RegisterUserInput!): AuthPayload`: Registers a new user with the provided user information.
 - `loginUser(input: LoginUserInput!): AuthPayload`: Authenticates a user with the provided login credentials.
-- `uploadVideo(input: UploadVideoInput!): Video`: Uploads a new video with the provided video information.
+- `createVideo(input: UploadVideoInput!): Video`: Uploads a new video with the provided video information.
 - `likeVideo(videoId: ID!): Video`: Likes a video specified by its ID.
 - `dislikeVideo(videoId: ID!): Video`: Dislikes a video specified by its ID.
 - `addComment(videoId: ID!, input: AddCommentInput!): Comment`: Adds a comment to a video specified by its ID.
 - `subscribeToChannel(channelId: ID!): Channel`: Subscribes to a channel specified by its ID.
 - `updateUserProfile(input: UpdateUserProfileInput!): User`: Updates the user's profile information with the provided input.
-- `updateVideo(videoId: ID!, input: UpdateVideoInput!): Vide`: Updates the information of a specific video specified by its ID.
-- `deleteVideo(videoId: ID!): Boolean`: eletes a specific video specified by its ID.
 - `deleteComment(commentId: ID!): Boolean`: Deletes a specific comment specified by its ID.
 - `createChannel(input: CreateChannelInput!): Channel`: Creates a new channel with the provided channel information.
 - `updateChannel(channelId: ID!, input: UpdateChannelInput!): Channel`: Updates the information of a specific channel specified by its ID.
@@ -118,15 +116,6 @@ This will start the server at http://localhost:3000.
 - `dislikeComment(commentId: ID!): Comment`: Dislikes a comment specified by its ID.
 - `likeChannel(channelId: ID!): Channel`: Likes a channel specified by its ID.
 - `dislikeChannel(channelId: ID!): Channel`: Dislikes a channel specified by its ID.
-- `addVideoToPlaylist(playlistId: ID!, videoId: ID!): Playlist`: Adds a video to a specific playlist.
-- `createPlaylist(input: CreatePlaylistInput!): Playlist`: Creates a new playlist with the provided playlist information.
-- `updatePlaylist(playlistId: ID!, input: UpdatePlaylistInput!): Playlist`: Updates the information of a specific playlist specified by its ID.
-- `deletePlaylist(playlistId: ID!): Boolean`: Deletes a specific playlist specified by its ID.
-- `likePlaylist(playlistId: ID!): Playlist`: Likes a playlist specified by its ID.
-- `dislikePlaylist(playlistId: ID!): Playlist`: Dislikes a playlist specified by its ID.
-- `addVideoToPlaylist(playlistId: ID!, videoId: ID!): Playlist`: Adds a video to a specific playlist.
-- `removeVideoFromPlaylist(playlistId: ID!, videoId: ID!): Playlist`: Removes a video from a specific playlist.
-- `updateChannelSubscription(channelId: ID!, isSubscribed: Boolean!): Channel`: Updates the subscription status of a channel for the currently authenticated user.
 
 ## Models
 
@@ -175,25 +164,18 @@ type Comment {
   updatedAt: String!
 }
 
-type Playlist {
-  id: ID!
-  name: String!
-  description: String
-  owner: User!
-  videos: [Video]!
-  createdAt: String!
-  updatedAt: String!
-}
+
 
 type AuthPayload {
   token: String!
-  user: User!
+  name: String!
 }
 
 input RegisterUserInput {
   name: String!
   email: String!
   password: String!
+  confirmPassword : String
 }
 
 input LoginUserInput {
