@@ -23,21 +23,15 @@ export class CommentService {
     return { id: createdVideo.insertedId };
   }
 
-  findAll() {
-    return `This action returns all comment`;
-  }
-
   async findCommentsOfVideo(videoId: string) {
     return await this.collection
       .find({ videoId: new ObjectId(videoId) })
       .toArray();
   }
 
-  update(id: number, updateCommentInput: UpdateCommentInput) {
-    return `This action updates a #${id} comment`;
-  }
+  
 
-  remove(id: number) {
-    return `This action removes a #${id} comment`;
+  async remove(id: string) {
+    return await this.collection.findOneAndDelete({ _id: new ObjectId(id) });
   }
 }

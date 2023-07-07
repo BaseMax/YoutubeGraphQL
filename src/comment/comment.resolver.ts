@@ -15,29 +15,14 @@ export class CommentResolver {
     return this.commentService.create(createCommentInput);
   }
 
-  @Query(() => [Comment], { name: "comment" })
-  findAll() {
-    return this.commentService.findAll();
-  }
-
+  
   @Query(() => [Comment], { name: "videoComments" })
   async getVideoComments(@Args("id") id: string) {
     return await this.commentService.findCommentsOfVideo(id);
-
   }
 
   @Mutation(() => Comment)
-  updateComment(
-    @Args("updateCommentInput") updateCommentInput: UpdateCommentInput
-  ) {
-    return this.commentService.update(
-      updateCommentInput.id,
-      updateCommentInput
-    );
-  }
-
-  @Mutation(() => Comment)
-  removeComment(@Args("id", { type: () => Int }) id: number) {
-    return this.commentService.remove(id);
+  async removeComment(@Args("id", { type: () => String }) id: string) {
+    return await this.commentService.remove(id);
   }
 }
